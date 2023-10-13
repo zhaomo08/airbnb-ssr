@@ -3,6 +3,12 @@
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
+
+let aa =""
+console.log(aa)
+
+function bb(){}
+bb
 </script>
 
 <template>

@@ -3,6 +3,8 @@ import {useRouter,useRoute} from 'vue-router'
 
 import { h,getCurrentInstance} from 'vue'
 
+import {getTicketList} from "../../api"
+
 const router = useRouter()
 const route =useRoute()
 
@@ -15,6 +17,12 @@ proxy.$message({
       h('i', { style: 'color: teal' }, 'VNode'),
     ]),
   })
+
+
+const getTickets = () =>{
+  getTicketList()
+}
+getTickets()
 </script>
 
 <template>
@@ -22,8 +30,13 @@ proxy.$message({
 <button @click="() => router.push({path:'/mine',query:{id:1}})">跳转到个人中心</button>
 <el-button>Default</el-button>
 
+<div  class="text">红宏观胡奥扫大撒大撒大苏打实打实大苏打实打实大开始的怕死的啊实打实大苏打萨达飒飒
+
+</div>
+
 </template>
 
-<style>
+<style lang="scss">
+@import "@/assets/scss/home/index.scss";
 
 </style>

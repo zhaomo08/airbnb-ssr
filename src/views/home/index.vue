@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {useRouter,useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 
-import { h,getCurrentInstance} from 'vue'
+import {getCurrentInstance, h} from 'vue'
 
-import {getTicketList} from "../../api"
-import {useI18n } from 'vue-i18n'
+import {fetchRoom} from "../../api"
+import {useI18n} from 'vue-i18n'
 
 import IndexedDB from '../../utils/indexedDB'
 
@@ -25,9 +25,11 @@ proxy.$message({
   })
 
 
-const getTickets = () =>{
-  getTicketList()
-}
+// const getTickets = () =>{
+//   getTicketList().then(res => {
+//     console.log(res)
+//   })
+// }
 // getTickets()
 
 // 数据库相关操作
@@ -61,6 +63,13 @@ function getObjectStoreItem(storeName: string,key: number | string){
   airbnbDB.getItem(storeName,key)
 }
 
+// mock 接口
+function getRoom() {
+  fetchRoom().then(res =>{
+    console.log('mock接口', res)
+  })
+}
+getRoom()
 
 
 const value1 =''

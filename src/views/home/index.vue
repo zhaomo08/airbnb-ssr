@@ -4,6 +4,10 @@ import {useRouter,useRoute} from 'vue-router'
 import { h,getCurrentInstance} from 'vue'
 
 import {getTicketList} from "../../api"
+import {useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+console.log(useI18n)
 
 const router = useRouter()
 const route =useRoute()
@@ -23,6 +27,8 @@ const getTickets = () =>{
   getTicketList()
 }
 getTickets()
+
+const value1 =''
 </script>
 
 <template>
@@ -33,6 +39,17 @@ getTickets()
 <div  class="text">红宏观胡奥扫大撒大撒大苏打实打实大苏打实打实大开始的怕死的啊实打实大苏打萨达飒飒
 
 </div>
+{{ t('message.home') }}
+
+
+<el-date-picker
+        v-model="value1"
+        type="datetime"
+        placeholder="Pick a Date"
+        format="YYYY-MM-DD HH:mm:ss"
+        date-format="MMM DD, YYYY"
+        time-format="HH:mm"
+      />
 
 </template>
 

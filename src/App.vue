@@ -1,48 +1,49 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router'
+// @ts-ignore
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+// @ts-ignore
+import en from 'element-plus/dist/locale/en.mjs'
 
-const router = useRouter()
+import {  ref } from "vue";
 
-let aa =""
-console.log(aa)
+// @ts-ignore
+import { useI18n  } from 'vue-i18n'
 
-function bb(){}
-bb
+// const router = useRouter()
+
+
+const { locale: localLanguage } = useI18n()
+const locale = ref(zhCn)
+
+const changeLang = (language: any) =>{
+  locale.value = language
+  localLanguage.value = language.name
+  console.log('languague: ',language)
+}
 </script>
 
+
+ 
 <template>
-  <!-- <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" /> -->
-  <button @click="() => router.push({ path: '/home' })">首页</button>
-  <button @click="() => router.push({ path: '/mine' })">个人中心</button>
+  <el-config-provider :locale="locale">
+
+  <button @click="changeLang(zhCn)">中文</button>
+  <button @click="changeLang(en)">英文</button>
+
+  
+
+  <!-- <button @click="() => router.push({ path: '/home' })">首页</button> -->
+  <!-- <button @click="() => router.push({ path: '/mine' })">个人中心</button> -->
 
   <router-link to='/home'>首页</router-link>
   <router-link to='/mine'>个人中心</router-link>
 
   <router-view/>
+ </el-config-provider>
 </template>
 
 <style lang="scss" scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 button {
   font-size: 40px
 }
